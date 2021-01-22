@@ -138,8 +138,8 @@
  * on the upper left of the PCB silkscreen.
  */
 #ifndef MOTHERBOARD
-  #define MOTHERBOARD BOARD_TRIGORILLA_14
-  //#define MOTHERBOARD BOARD_TRIGORILLA_14_11
+  //#define MOTHERBOARD BOARD_TRIGORILLA_14
+  #define MOTHERBOARD BOARD_TRIGORILLA_14_11
 #endif
 
 // Name displayed in the LCD "Ready" message and Info menu
@@ -686,19 +686,19 @@
  * :['A4988', 'A5984', 'DRV8825', 'LV8729', 'L6470', 'L6474', 'POWERSTEP01', 'TB6560', 'TB6600', 'TMC2100', 'TMC2130', 'TMC2130_STANDALONE', 'TMC2160', 'TMC2160_STANDALONE', 'TMC2208', 'TMC2208_STANDALONE', 'TMC2209', 'TMC2209_STANDALONE', 'TMC26X', 'TMC26X_STANDALONE', 'TMC2660', 'TMC2660_STANDALONE', 'TMC5130', 'TMC5130_STANDALONE', 'TMC5160', 'TMC5160_STANDALONE']
  */
 
-#define X_DRIVER_TYPE  TMC2208_STANDALONE
-#define Y_DRIVER_TYPE  TMC2208_STANDALONE
-#define Z_DRIVER_TYPE  TMC2208_STANDALONE
-#define X2_DRIVER_TYPE TMC2208_STANDALONE
-#define Y2_DRIVER_TYPE TMC2208_STANDALONE
-#define Z2_DRIVER_TYPE TMC2208_STANDALONE
-#define Z3_DRIVER_TYPE TMC2208_STANDALONE
-#define Z4_DRIVER_TYPE TMC2208_STANDALONE
-#define E0_DRIVER_TYPE TMC2208_STANDALONE
-#define E1_DRIVER_TYPE TMC2208_STANDALONE
-#define E2_DRIVER_TYPE TMC2208_STANDALONE
-#define E3_DRIVER_TYPE TMC2208_STANDALONE
-#define E4_DRIVER_TYPE TMC2208_STANDALONE
+#define X_DRIVER_TYPE  A4988
+#define Y_DRIVER_TYPE  A4988
+#define Z_DRIVER_TYPE  A4988
+#define X2_DRIVER_TYPE A4988
+#define Y2_DRIVER_TYPE A4988
+#define Z2_DRIVER_TYPE A4988
+#define Z3_DRIVER_TYPE A4988
+#define Z4_DRIVER_TYPE A4988
+#define E0_DRIVER_TYPE A4988
+#define E1_DRIVER_TYPE A4988
+#define E2_DRIVER_TYPE A4988
+#define E3_DRIVER_TYPE A4988
+#define E4_DRIVER_TYPE A4988
 //#define E5_DRIVER_TYPE A4988
 //#define E6_DRIVER_TYPE A4988
 //#define E7_DRIVER_TYPE A4988
@@ -746,7 +746,7 @@
  * Override with M92
  *                                      X, Y, Z, E0 [, E1[, E2...]]
  */
-#define DEFAULT_AXIS_STEPS_PER_UNIT   { 80, 80, 400, 92.6 }
+#define DEFAULT_AXIS_STEPS_PER_UNIT   { 80, 80, 400, 96.46 }
 /**
  * Default Max Feed Rate (mm/s)
  * Override with M203
@@ -861,7 +861,7 @@
  *      - normally-open switches to 5V and D32.
  *
  */
-//#define Z_MIN_PROBE_PIN 32 // Pin 32 is the RAMPS default
+#define Z_MIN_PROBE_PIN 15 // Pin 32 is the RAMPS default
 
 /**
  * Probe Type
@@ -1071,15 +1071,15 @@
 // @section machine
 
 // Invert the stepper direction. Change (or reverse the motor connector) if an axis goes the wrong way.
-#define INVERT_X_DIR false // set to true for stock drivers or TMC2208 with reversed connectors
-#define INVERT_Y_DIR true // set to false for stock drivers or TMC2208 with reversed connectors
-#define INVERT_Z_DIR true // set to false for stock drivers or TMC2208 with reversed connectors
+#define INVERT_X_DIR true // set to true for stock drivers or TMC2208 with reversed connectors
+#define INVERT_Y_DIR false // set to false for stock drivers or TMC2208 with reversed connectors
+#define INVERT_Z_DIR false // set to false for stock drivers or TMC2208 with reversed connectors
 
 // @section extruder
 
 // For direct drive extruder v9 set to true, for geared extruder set to false.
-#define INVERT_E0_DIR true // set to false for stock drivers or TMC2208 with reversed connectors
-#define INVERT_E1_DIR true // set to false for stock drivers or TMC2208 with reversed connectors
+#define INVERT_E0_DIR false // set to false for stock drivers or TMC2208 with reversed connectors
+#define INVERT_E1_DIR false // set to false for stock drivers or TMC2208 with reversed connectors
 #define INVERT_E2_DIR false
 #define INVERT_E3_DIR false
 #define INVERT_E4_DIR false
@@ -1489,7 +1489,7 @@
 
 // Preheat Constants
 #define PREHEAT_1_LABEL       "PLA"
-#define PREHEAT_1_TEMP_HOTEND 200
+#define PREHEAT_1_TEMP_HOTEND 190
 #define PREHEAT_1_TEMP_BED     50
 #define PREHEAT_1_FAN_SPEED     0 // Value from 0 to 255
 
