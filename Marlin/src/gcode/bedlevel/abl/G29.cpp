@@ -319,6 +319,7 @@ G29_TYPE GcodeSuite::G29() {
           LIMIT(i, 0, GRID_MAX_POINTS_X - 1);
           LIMIT(j, 0, GRID_MAX_POINTS_Y - 1);
         }
+        //EDWIN MARCA AQUI
         if (WITHIN(i, 0, GRID_MAX_POINTS_X - 1) && WITHIN(j, 0, GRID_MAX_POINTS_Y)) {
           set_bed_leveling_enabled(false);
           z_values[i][j] = rz;
@@ -728,7 +729,32 @@ G29_TYPE GcodeSuite::G29() {
             incremental_LSF(&lsf_results, probePos, measured_z);
 
           #elif ENABLED(AUTO_BED_LEVELING_BILINEAR)
-
+            //Edwin marca aqui para correccion de offset
+            //      0      1      2
+            //  0 +0.902 +0.551 -0.857
+            //  1 +0.720 +0.532 +0.357
+            //  2 +0.656 +0.514 +0.472
+            //if (meshCount.x == 0 & meshCount.y == 0)
+            //{
+            //  z_values[meshCount.x][meshCount.y] = measured_z + zoffset - 0.952;
+            //}else if (meshCount.x == 0 & meshCount.y == 1){
+            //  z_values[meshCount.x][meshCount.y] = measured_z + zoffset - 0.720 ;
+            //}else if (meshCount.x == 0 & meshCount.y == 2){
+            //  z_values[meshCount.x][meshCount.y] = measured_z + zoffset - 0.656;
+            //}else if (meshCount.x == 1 & meshCount.y == 0){
+            //  z_values[meshCount.x][meshCount.y] = measured_z + zoffset - 0.551;
+            //}else if (meshCount.x == 1 & meshCount.y == 1){
+            //  z_values[meshCount.x][meshCount.y] = measured_z + zoffset - 0.532;
+            //}else if (meshCount.x == 1 & meshCount.y == 2){
+            //  z_values[meshCount.x][meshCount.y] = measured_z + zoffset - 0.514;
+            //}else if (meshCount.x == 2 & meshCount.y == 0){
+            //  z_values[meshCount.x][meshCount.y] = measured_z + zoffset + 0.807;
+            //}else if (meshCount.x == 2 & meshCount.y == 1){
+            //  z_values[meshCount.x][meshCount.y] = measured_z + zoffset - 0.357;
+            //}else if (meshCount.x == 2 & meshCount.y == 2){
+            //  z_values[meshCount.x][meshCount.y] = measured_z + zoffset - 0.522;
+            //};
+            
             z_values[meshCount.x][meshCount.y] = measured_z + zoffset;
             #if ENABLED(EXTENSIBLE_UI)
               ExtUI::onMeshUpdate(meshCount, z_values[meshCount.x][meshCount.y]);
